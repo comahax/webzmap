@@ -3,7 +3,8 @@ import os
 import subprocess
 import time
 import datetime
-
+import logging
+logger = logging.getLogger("zmapd")
 
 class ZmapStatus(object):
     def __init__(self):
@@ -97,7 +98,7 @@ class Zmap(object):
              verbosity=None, status_updates_path=None, quiet=False, stdout=None, stderr=None):
         if verbosity:
             self.verbosity = verbosity
-        cmd = "%s -p %s" % (self.execute_bin, port)
+        cmd = "sudo %s -p %s" % (self.execute_bin, port)
         if output_path:
             output_path = os.path.join(self.cwd, output_path)
             create_parent_dir(output_path)
@@ -112,6 +113,7 @@ class Zmap(object):
             black_list = os.path.join(self.cwd, black_list)
             create_parent_dir(black_list)
             cmd += " -b %s" % black_list
+        '''
         if status_updates_path:
             status_updates_path = os.path.join(self.cwd, status_updates_path)
             create_parent_dir(status_updates_path)
@@ -120,12 +122,16 @@ class Zmap(object):
             log_path = os.path.join(self.cwd, log_path)
             create_parent_dir(log_path)
             cmd += " -l %s" % log_path
+        '''
         cmd += ' -v %s' % self.verbosity
         if subnets:
             cmd += ' ' + subnets
         if quiet:
             cmd += ' -q'
+        cmd += ' -i eth0'
+        logger.error(cmd)
         cmd = filter(lambda x: x.strip() != '', cmd.split(" "))
+        logger.error(cmd)
         return subprocess.Popen(cmd, stderr=stderr, stdout=stdout, cwd=self.cwd)
 
 
