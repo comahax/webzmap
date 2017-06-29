@@ -172,3 +172,4 @@ LOGGING = {
         },
     }
 }
+ZMAP_PATH = "/usr/sbin/zmap"
