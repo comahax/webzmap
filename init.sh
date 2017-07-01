@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo cp ~/webzmap/createsuperuser.py /usr/local/lib/python2.7/dist-packages/django/contrib/auth/management/commands/
+#sudo cp ~/webzmap/createsuperuser.py /usr/local/lib/python2.7/dist-packages/django/contrib/auth/management/commands/
 sudo cp ~/webzmap/sources.list /etc/apt/sources.list
 sudo apt-get update
 sudo apt-get install -y zmap
