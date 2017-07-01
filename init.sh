@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo cp ~/webzmap/sources.list /etc/apt/sources.list
 sudo apt-get update
 sudo apt-get install -y zmap
 sudo apt-get install -y python-pip
