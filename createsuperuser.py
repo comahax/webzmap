@@ -91,6 +91,12 @@ class Command(BaseCommand):
             # KeyboardInterrupt and exit gracefully.
             default_username = get_default_username()
             try:
+
+                if hasattr(self.stdin, 'isatty') and not self.stdin.isatty():
+                    #raise NotRunningInTTYException("Not running in a TTY")
+                    print "1"
+
+                # Get a username
                 verbose_field_name = self.username_field.verbose_name
                 while username is None:
                     input_msg = capfirst(verbose_field_name)
