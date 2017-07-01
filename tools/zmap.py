@@ -113,7 +113,7 @@ class Zmap(object):
             black_list = os.path.join(self.cwd, black_list)
             create_parent_dir(black_list)
             cmd += " -b %s" % black_list
-        '''
+        
         if status_updates_path:
             status_updates_path = os.path.join(self.cwd, status_updates_path)
             create_parent_dir(status_updates_path)
@@ -122,7 +122,7 @@ class Zmap(object):
             log_path = os.path.join(self.cwd, log_path)
             create_parent_dir(log_path)
             cmd += " -l %s" % log_path
-        '''
+        
         cmd += ' -v %s' % self.verbosity
         if subnets:
             cmd += ' ' + subnets
