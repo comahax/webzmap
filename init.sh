@@ -7,10 +7,12 @@ sudo apt-get install -y python-pip
 sudo -H pip install -r ~/webzmap/requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple/
 sudo python ~/webzmap/manage.py migrate
 sudo python ~/webzmap/manage.py zmapd start
-sudo python ~/webzmap/manage.py createsuperuser << EOF
-root
-apple@apple.com
-123qweasd
-123qweasd
-EOF
+#sudo python ~/webzmap/manage.py createsuperuser << EOF
+#root
+#apple@apple.com
+#123qweasd
+#123qweasd
+#EOF
+sudo apt-get install -y expect
+sudo expect ~/webzmap/user.sh
 sudo python ~/webzmap/manage.py runserver 0.0.0.0:8000 &
